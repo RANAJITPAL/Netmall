@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+<script type="text/javascript">
+	function check(){
+		var userid = document.loginfrm.userid ;
+		var password = document.loginfrm.password ;
+		//alert(userid.value+password.value.length)
+		if(password.value.length < 6)
+			{
+				document.getElementById("s").innerHTML="<font color='blue'>password length minimum 6 charecter long</font>";
+				password.focus();
+				return false;
+			}
+		else
+			{
+				url="Login?userid="+userid.value+"&password="+password.value;
+				var obj = new XMLHttpRequest();
+				obj.onreadystatechange = function()
+				{
+					if(obj.status == 200 && obj.readyState==4)
+						{
+							document.getElementById("s").innerHTML = obj.responseText;
+						}
+				}
+				obj.open("POST",url,true);
+				obj.send();
+				
+				document.loginfrm.userid.value="";
+				document.loginfrm.password.value="";
+			}
+	}
+</script>
+
+
+<style type="text/css">
+	.button {
+  border: none;
+  color: white;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right:20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {
+	border-radius: 2px;
+	background-color: #669999;	
+}
+
+.button2 {
+	border-radius: 2px; 
+	background-color: #666699;
+}
+
+.button3 {
+	border-radius: 2px;   
+	background-color: #ff9933;
+}
+
+
+</style>
+
+
+</head>
+<body>
+	<table border="2" style="width: 90%;" align="center">
+		<tr style="height: 100px; width: 100%">
+			<th colspan="3" style="width: 30%">
+				<img  src="netmal_logo.png" style="height: 100px;width: 100%">
+			</th>
+			<th colspan="5" style="width: 70%;background-color:  #df9f9f;">
+				<font style="color: lime; font-size: 70px; font-style: italic;font-weight: bold;">NetMall</font>
+				<br>
+				<font style="color: yellow; font-size: 25px; font-style: italic;font-weight:normal; ;">Everythig Under a roof</font>
+			</th>
+		</tr>
+		
+		<tr style="background-color:aqua;">
+			<th style="width: 10%;">
+				<a href="Home.html" class = "button button1">Home</a>
+			</th>
+			<th style="width: 10%;">
+				About Us
+			</th>
+			<th style="width: 10%;">
+				FAQ
+			</th>
+			<th style="width: 20%;">
+				<a href='Admin.html' class = "button button1">Admin Login</a>
+			</th>
+			<th colspan="4" style="padding-right: 20px; text-align: right;padding-right: 6% width: 50%;">
+				<a href="login.html" class = "button button1">Signup/Signin</a>
+			</th >
+		</tr>
+		
+		<tr style="height: 300px;">
+			<th colspan="8" style=" background-image: url('online-shoping.jpg'); background-size: 100%;">
+				<form action="" name="loginfrm">
+					<table style="border: 5px;"align="center">
+						<tr>
+							<th colspan="2">
+								<font style="color: #ff33cc; size: 20px; text-decoration:underline;">LOGIN</font>
+							</th>
+						</tr>
+						<tr>
+							<th>
+								<font style="color: #66ccff; size: 20px">USER ID</font>
+							</th>
+							<th>
+								<input type="text" name="userid">
+							</th>
+						</tr>
+						
+						<tr>
+							<th>
+								<font style="color: #66ccff; size: 20px">PASSWORD</font>
+							</th>
+							<th>
+								<input type="password" name="password">
+							</th>
+						</tr>
+						<tr>
+							<th colspan="2" style="text-align: center;">
+								<input type="button" value="LogIn" onclick="check()" class = "button button2" >
+							</th>
+						</tr>
+						
+						<tr>
+							<th colspan="2" style="text-align: center;">
+								<font style="color:  #ff0000;size: 15px;">If you are a new User</font> 
+								<font style="color:   #003300;size: 15px;" class = "button button3"><a href="Signup.html">CLICK HERE</a></font>
+							</th>
+						</tr>
+					
+					</table>
+				</form>
+				
+				<table align="center">
+					<tr>
+						<th colspan="2" style="text-align: center;">
+							<div id ="s">
+							</div>	
+						</th>
+					</tr>
+				</table>
+			</th>
+		</tr>
+		
+		<tr style="background-color: gray;">
+			<th style="height: 100px;text-align: center; width: 30%" colspan="3" >
+				<font style="color: #ffb399;">About us</font>
+				<br>
+				<font style="color: #ffb399;">feedback</font>
+				<br>
+				<font style="color: #ffb399;">Sitemap</font>
+				<br>
+				<font style="color: #ffb399;">Privacy Policy</font>
+			</th>
+			
+			<th style="height: 75px;text-align: center; width: 40%" colspan="2">
+				<font style="color:  #ffb399;">Copyright &copy; 2019</font>
+				<br>
+				<font style="color: #ffb399;">ALL RIGHT RESERVED</font>
+				<br>
+				<font style="color: #ffb399;">SITE MAINTAINED BY</font>
+				<br>
+				<font style="color: #ffb399;">RANAJIT PAL</font>
+			</th>
+			
+			<th style="height: 75px;text-align: center; width: 30%" colspan="3">
+				<font style="color: #ffb399;">Follow us on</font>
+				<br>
+				<font style="color: #ffb399;">Facebook</font>
+				<br>
+				<font style="color: #ffb399;">Twitter</font>
+				<br>
+				<font style="color: #ffb399;"></font>
+			</th>
+		
+		</tr>
+	</table>
+</body>
+</html>

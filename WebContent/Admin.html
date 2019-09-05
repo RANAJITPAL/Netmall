@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin Page</title>
+
+
+<script type="text/javascript">
+	function adminlogin(){
+		
+		
+		//alert("1");
+		var userid = document.admin_loginfrm.admin_userid ;
+		var password = document.admin_loginfrm.admin_password ;
+		
+		//alert(userid.value);
+		url="AdminLogin?userid="+userid.value+"&password="+password.value;
+		var obj = new XMLHttpRequest();
+		obj.onreadystatechange = function()
+		{
+			if(obj.status == 200 && obj.readyState==4)
+				{
+					document.getElementById("s").innerHTML = obj.responseText;
+				}
+		}
+		
+		//alert("1");
+		obj.open("POST",url,true);
+		obj.send();
+		
+		//alert(userid.value);
+		document.admin_loginfrm.admin_userid="";
+		document.admin_loginfrm.admin_password="";
+		
+	}
+
+</script>
+
+
+
+
+</head>
+<body>
+
+
+<table border="2" style="width: 90%;" align="center">
+		<tr style="height: 100px; width: 100%">
+			<th colspan="3" style="width: 30%">
+				<img  src="netmal_logo.png" style="height: 100px;width: 100%">
+			</th>
+			<th colspan="5" style="width: 70%;background-color:  #df9f9f;">
+				<font style="color: lime; font-size: 70px; font-style: italic;font-weight: bold;">NetMall</font>
+				<br>
+				<font style="color: yellow; font-size: 25px; font-style: italic;font-weight:normal; ;">Everythig Under a roof</font>
+			</th>
+		</tr>
+		
+		
+		<tr style="height: 300px;">
+			<th colspan="8" style=" background-image: url('admin.jpg'); background-size: 100%;">
+				<form action="" name="admin_loginfrm">
+					<table style="border: 5px;"align="center">
+						<tr>
+							<th colspan="2">
+								<font style="color: #ff33cc; size: 20px; text-decoration:underline;">ADMIN LOGIN</font>
+							</th>
+						</tr>
+						<tr>
+							<th>
+								<font style="color: #ffff00; size: 20px">ADMIN USER ID</font>
+							</th>
+							<th>
+								<input type="text" name="admin_userid">
+							</th>
+						</tr>
+						
+						<tr>
+							<th>
+								<font style="color: #ffff00; size: 20px">ADMIN PASSWORD</font>
+							</th>
+							<th>
+								<input type="password" name="admin_password">
+							</th>
+						</tr>
+						<tr>
+							<th colspan="2" style="text-align: center;">
+								<input type="button" value="Submit" onclick="adminlogin()">
+							</th>
+						</tr>
+					</table>
+				</form>
+				
+				<table align ="center">
+				
+					<tr>
+						<th colspan="2" style="text-align: center;">
+							<font style="color:  #ff0000;size: 15px;">If you are a User</font> 
+							<font style="color:   #003300;size: 15px;"><a href="login.html">CLICK HERE</a></font>
+						</th>
+					</tr>
+					
+					
+					<tr>
+						<th>
+							<div id ="s"></div>
+						</th>
+					</tr>
+				</table>
+			</th>
+		</tr>
+	</table>
+
+
+
+
+</body>
+</html>
